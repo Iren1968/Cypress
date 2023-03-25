@@ -1,0 +1,26 @@
+{
+  "name": "cypress",
+  "version": "1.0.0",
+  "description": "1st cypress tests",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Iren1968/Cypress_start.git"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "Iren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Iren1968/Cypress_start/issues"
+  },
+  "homepage": "https://github.com/Iren1968/Cypress_start#readme",
+  "devDependencies": {
+    "cypress": "^12.8.1"
+  }
+}

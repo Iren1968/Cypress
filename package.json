@@ -4,6 +4,7 @@
   "description": "1st cypress tests",
   "main": "index.js",
   "scripts": {
+    "cy:prod": "npx cypress open --config-file 'cypress-prod.config.js'",
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run"   
     

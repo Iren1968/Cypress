@@ -5,8 +5,10 @@ describe('Santa second test suite', () => {
       '.layout-1__header-wrapper-fixed > .layout-1__header > .header > .header__items > a > .base--clickable > .header-item__text > .txt--med'
     ).click();
     cy.get(':nth-child(3) > .frm').type('kapadolgova@gmail.com');
+    //cy.get('input[name=email]').type(email);
     cy.get(':nth-child(4) > .frm').type('Gibbon45');
-    cy.get('.btn-main').wait(5000).click();
+    //cy.get('input[name=password]').type(password);
+    cy.get('.btn-main').wait(65000).click();
   });
   it('Test the link Boxes', () => {
     cy.get(

@@ -4,11 +4,14 @@
   "description": "1st cypress tests",
   "main": "index.js",
   "scripts": {
-    "cy:prod": "npx cypress open --config-file 'cypress-prod.config.js'",
+    "cy:prod": "npx cypress open --config-file cypress-prod.config.js --spec cypress/e2e/santa/second_santa.cy.js",
     "cy:open": "npx cypress open",
-    "cy:run": "npx cypress run"   
-    
-  },
+    "cy:run": "npx cypress run",
+    "cy:run:chrome":"npx cypress run --browser chrome --spec cypress/e2e/santa/second_santa.cy.js",
+    "cy:run:electron":"npx cypress run --browser electron --spec cypress/e2e/santa/second_santa.cy.js",
+    "cy:run:all":"npm run cy:run:chrome && npm run cy:run:electron",
+    "cy:run:all:dash":"npm run cy:run:chrome --record --key c9b5e0bc-c9a0-4f3a-ab5a-1a524e2b7fd2 && npm run cy:run:electron --record --key c9b5e0bc-c9a0-4f3a-ab5a-1a524e2b7fd2"
+      },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Iren1968/Cypress_start.git"

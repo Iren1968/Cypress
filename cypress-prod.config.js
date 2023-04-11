@@ -5,7 +5,7 @@ module.exports = defineConfig({
   e2e: {
     env: {
       environment: 'staging',
-      email: 'kapadolgova@gmail.com',
+      mail: 'kapadolgova@gmail.com',
       password: 'Gloria12',
     },
     baseUrl: 'https://santa-secret.ru/',

@@ -8,8 +8,8 @@
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
     "cy:run:chrome":"npx cypress run --browser chrome --spec cypress/e2e/santa/second_santa.cy.js",
-    "cy:run:electron":"npx cypress run --browser electron --spec cypress/e2e/santa/second_santa.cy.js",
-    "cy:run:all":"npm run cy:run:chrome && npm run cy:run:electron",
+    "cy:run:electron":"npx cypress run --browser electron --spec cypress/e2e/santa/first_santa.cy.js",
+    "cy:run:all":"npm run cy:run:electron '&&' npm run cy:run:chrome",
     "cy:run:all:dash":"npm run cy:run:chrome --record --key c9b5e0bc-c9a0-4f3a-ab5a-1a524e2b7fd2 && npm run cy:run:electron --record --key c9b5e0bc-c9a0-4f3a-ab5a-1a524e2b7fd2"
       },
   "repository": {

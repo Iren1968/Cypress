@@ -4,6 +4,8 @@ module.exports = defineConfig({
   projectId: 'ht8vzr',
   e2e: {
     baseUrl: 'https://santa-secret.ru/',
+    pageLoadTimeout: 200000,
+    watchForFileChanges: false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },

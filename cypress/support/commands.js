@@ -1,3 +1,13 @@
+import { Login } from '../e2e/santa/PageObject/Login';
+var login = new Login();
+
+Cypress.Commands.add('loginSS', (email, password) => {
+  login.btnLogin().wait(65000).click();
+  login.email().type(Cypress.env('mail'));
+  login.password().type(Cypress.env('password'));
+  login.clickBtnLogin().wait(65000).click();
+});
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite

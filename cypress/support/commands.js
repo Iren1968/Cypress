@@ -8,6 +8,23 @@ Cypress.Commands.add('loginSS', (email, password) => {
   login.clickBtnLogin().wait(65000).click();
 });
 
+Cypress.Commands.add('enterLogin', (selector, email) => {
+  cy.get(selector).type(email);
+});
+
+Cypress.Commands.add('typeUserName', (selector, email) => {
+  cy.get(selector).type(email);
+});
+
+Cypress.Commands.add('valiLogin', (email, userName) => {
+  cy.typeUserName(selectorName, userName),
+    cy.get('[name="email"]').type(email),
+    cy.get('.btn-main').click(),
+    cy
+      .get("[class='picture-notice__title.txt-h3--semi.txt']")
+      .should('have text', 'Письмо отправлено!');
+});
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite

@@ -1,18 +1,18 @@
-const { defineConfig } = require('cypress');
+const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  projectId: 'ht8vzr',
+  projectId: "ht8vzr",
   e2e: {
-    baseUrl: 'https://santa-secret.ru/',
-    pageLoadTimeout: 200000,
+    baseUrl: "https://santa-secret.ru/",
+    pageLoadTimeout: 20000,
     watchForFileChanges: false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
     env: {
-      environment: 'staging',
-      mail: 'kapadolgova@gmail.com',
-      password: 'Gloria12',
+      environment: "staging",
+      mail: "kapadolgova@gmail.com",
+      password: "Gloria12",
     },
   },
 });

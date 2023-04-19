@@ -1,28 +1,28 @@
-import { Login } from '../e2e/santa/PageObject/Login';
+import { Login } from "../fixtures/Login";
 var login = new Login();
 
-Cypress.Commands.add('loginSS', (email, password) => {
-  login.btnLogin().wait(65000).click();
-  login.email().type(Cypress.env('mail'));
-  login.password().type(Cypress.env('password'));
-  login.clickBtnLogin().wait(65000).click();
+Cypress.Commands.add("loginSS", (email, password) => {
+  login.btnLogin().wait(650).click();
+  login.email().type(Cypress.env("mail"));
+  login.password().type(Cypress.env("password"));
+  login.clickBtnLogin().wait(650).click();
 });
 
-Cypress.Commands.add('enterLogin', (selector, email) => {
+Cypress.Commands.add("enterLogin", (selector, email) => {
   cy.get(selector).type(email);
 });
 
-Cypress.Commands.add('typeUserName', (selector, email) => {
+Cypress.Commands.add("typeUserName", (selector, email) => {
   cy.get(selector).type(email);
 });
 
-Cypress.Commands.add('valiLogin', (email, userName) => {
+Cypress.Commands.add("valiLogin", (email, userName) => {
   cy.typeUserName(selectorName, userName),
     cy.get('[name="email"]').type(email),
-    cy.get('.btn-main').click(),
+    cy.get(".btn-main").click(),
     cy
       .get("[class='picture-notice__title.txt-h3--semi.txt']")
-      .should('have text', 'Письмо отправлено!');
+      .should("have text", "Письмо отправлено!");
 });
 
 // ***********************************************
@@ -50,7 +50,7 @@ Cypress.Commands.add('valiLogin', (email, userName) => {
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.on('uncaught:exception', (err, runnable) => {
+Cypress.on("uncaught:exception", (err, runnable) => {
   // returning false here prevents Cypress from
   // failing the test
   return false;

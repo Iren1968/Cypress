@@ -16,13 +16,16 @@ Cypress.Commands.add('typeUserName', (selector, email) => {
   cy.get(selector).type(email);
 });
 
+const regSelectors = require('../fixtures/pageRegistrationSelector.json');
+
 Cypress.Commands.add('validLogin', (email, userName) => {
-  cy.typeUserName(selectorName, userName),
+  cy.typeUserName(regSelectors.nameField, userName),
     cy.get('[name="email"]').type(email),
     cy.get('.btn-main').click(),
     cy
-      .get("[class='picture-notice__title.txt-h3--semi.txt']")
-      .should('have text', 'Письмо отправлено!');
+      .get('.picture-notice__title')
+      .contains('Письмо отправлено!')
+      .and('have.class', 'picture-notice__title txt-h3--semi txt');
 });
 
 // ***********************************************
@@ -50,8 +53,8 @@ Cypress.Commands.add('validLogin', (email, userName) => {
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.on('uncaught:exception', (err, runnable) => {
-  // returning false here prevents Cypress from
-  // failing the test
-  return false;
-});
+//Cypress.on('uncaught:exception', (err, runnable) => {
+// returning false here prevents Cypress from
+// failing the test
+//return false;
+//});

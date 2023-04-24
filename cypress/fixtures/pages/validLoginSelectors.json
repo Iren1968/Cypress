@@ -1,0 +1,4 @@
+{
+    "loginButton": ".btn-main",
+    "registrationField": ".picture-notice__title"
+}

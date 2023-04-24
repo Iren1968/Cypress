@@ -21,11 +21,20 @@ const regSelectors = require('../fixtures/pageRegistrationSelector.json');
 Cypress.Commands.add('validLogin', (email, userName) => {
   cy.typeUserName(regSelectors.nameField, userName),
     cy.get('[name="email"]').type(email),
-    cy.get('.btn-main').click(),
+    cy.get(loginButton).click(),
     cy
-      .get('.picture-notice__title')
+      .get(registrationField)
       .contains('Письмо отправлено!')
       .and('have.class', 'picture-notice__title txt-h3--semi txt');
+});
+
+Cypress.Commands.add('changePassword', (userName, newPassword) => {
+  cy.contains(userName).click({ force: true });
+  cy.get('.layout-column-start > :nth-child(1) > .frm').type(newPassword);
+  cy.get(
+    ':nth-child(4) > .form-page-group__main > .layout-column-start > :nth-child(2) > .frm'
+  ).type(newPassword);
+  cy.get('.layout-row-end > .btn-service').click();
 });
 
 // ***********************************************

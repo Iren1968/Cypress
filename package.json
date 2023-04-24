@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/Iren1968/Cypress_start#readme",
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "cypress": "^12.10.0"
   }
 }

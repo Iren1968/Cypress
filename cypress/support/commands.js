@@ -37,6 +37,71 @@ Cypress.Commands.add('changePassword', (userName, newPassword) => {
   cy.get('.layout-row-end > .btn-service').click();
 });
 
+import { faker } from '@faker-js/faker';
+Cypress.Commands.add('loginAPI', (userEmail, userPassword) => {
+  cy.request({
+    method: 'POST',
+    headers: {
+      Cookie:
+        'connect.sid=s%3ACkRrHPqSPLTu63an7a8NxHudkxQXCLd7.3wq3k9vpZHfcMGwdCeSUyS0Ma0FxIhfG0M%2Bl1o9GNLg',
+    },
+    url: 'https://staging.lpitko.ru/api/login',
+    body: { email: userEmail, password: userPassword },
+  });
+});
+
+Cypress.Commands.add('createBox', (idBox, boxName) => {
+  cy.request({
+    method: 'POST',
+    url: '/api/box',
+    body: {
+      email: null,
+      name: boxName,
+      key: idBox,
+      picture: 'cup_one',
+      usePost: false,
+      useCashLimit: null,
+      cashLimit: null,
+      cashLimitCurrency: null,
+      useWish: true,
+      useCircleDraw: null,
+      isInviteAfterDraw: null,
+      isArchived: null,
+      createAdminCard: null,
+      isCreated: true,
+      useNames: true,
+      isPhoneRequired: false,
+      logo: null,
+    },
+  });
+});
+
+Cypress.Commands.add('editBox', (idBox) => {
+  const newNameBox = faker.word.noun(6);
+  cy.request({
+    method: 'POST',
+    url: '/api/box',
+    body: {
+      email: null,
+      name: newNameBox,
+      key: idBox,
+      picture: 'cup_one',
+      usePost: false,
+      useCashLimit: false,
+      cashLimit: null,
+      cashLimitCurrency: null,
+      useWish: true,
+      useCircleDraw: null,
+      isInviteAfterDraw: null,
+      isArchived: null,
+      createAdminCard: null,
+      isCreated: null,
+      useNames: true,
+      isPhoneRequired: false,
+      logo: null,
+    },
+  });
+});
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite

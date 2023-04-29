@@ -102,6 +102,16 @@ Cypress.Commands.add('editBox', (idBox) => {
     },
   });
 });
+
+const loginPageSelectors = require('../fixtures/pages/loginPageSelectors.json');
+const generalElements = require('../fixtures/pages/general.json');
+
+Cypress.Commands.add('loginSCB', (userName, password) => {
+  cy.get(loginPageSelectors.loginField).type(userName);
+  cy.get(loginPageSelectors.passwordField).type(password);
+  cy.get(generalElements.enterButton).click();
+});
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite

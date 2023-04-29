@@ -4,6 +4,7 @@ module.exports = defineConfig({
   projectId: 'ht8vzr',
   e2e: {
     baseUrl: 'https://staging.lpitko.ru/',
+    testIsolation: false,
     pageLoadTimeout: 200000,
     watchForFileChanges: false,
     setupNodeEvents(on, config) {

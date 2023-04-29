@@ -1,5 +1,5 @@
 {
     "emailField": ":nth-child(3) > .frm",
-    "passwordField": ":nth-child(4) > .frm",
-    "enterButton": ".btn-main"
+    "passwordField": ":nth-child(4) > .frm"
+    
   }

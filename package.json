@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "cy:prod": "npx cypress open --config-file cypress-prod.config.js --spec cypress/e2e/second_santa.cy.js",
+    "cy:runAPI": "npx cypress run --spec cypress/e2e/santa/santa_API17.2.cy.js",
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
     "cy:run:chrome": "npx cypress run --browser chrome --spec cypress/e2e/second_santa.cy.js",
@@ -27,6 +28,6 @@
   "homepage": "https://github.com/Iren1968/Cypress_start#readme",
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "cypress": "^12.10.0"
+    "cypress": "^12.11.0"
   }
 }

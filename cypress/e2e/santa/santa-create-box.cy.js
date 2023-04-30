@@ -97,4 +97,13 @@ describe('user can create a box and run it', () => {
         'Карточки участников успешно созданы и приглашения уже отправляются.'
       );
   });
+  it('Drawing', () => {
+    cy.get(
+      '.layout-1__header-wrapper-fixed > .layout-1__header-secondary > .header-secondary > .header-secondary__left-item > .box-header-info > .box-header-info__wrapper'
+    ).click();
+    cy.get('a > .txt-secondary--med').click();
+    cy.get(generalElements.enterButton).click();
+    cy.get('.santa-modal_content_buttons > .btn-main').click();
+    cy.contains('Жеребьевка проведена').should('exist');
+  });
 });

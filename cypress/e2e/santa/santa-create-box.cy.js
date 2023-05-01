@@ -13,6 +13,7 @@ describe('user can create a box and run it', () => {
   let maxAmount = 50;
   let currency = 'Евро';
   let inviteLink;
+  let idBox = faker.word.noun({ length: { min: 5, max: 15 } });
 
   it('user logins and create a box', () => {
     cy.visit('/login');
@@ -139,5 +140,20 @@ describe('user can create a box and run it', () => {
       `У тебя появился подопечный в коробке "Mango". Скорее переходи по кнопке, чтобы узнать кто это!`
     ).should('exist');
     cy.clearCookies();
+  });
+
+  after('Delete boxes by userAutor', () => {
+    cy.request({
+      method: 'POST',
+      url: 'https://staging.lpitko.ru/api/login',
+      body: {
+        email: users_new.userAutor.email,
+        password: usres_new.userAutor.password,
+      },
+    });
+  });
+  cy.request({
+    metod: 'DELETE',
+    url: 'api/box/${idBox}',
   });
 });

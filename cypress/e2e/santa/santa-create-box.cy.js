@@ -65,7 +65,7 @@ describe('user can create a box and run it', () => {
     cy.clearCookies();
   });
 
-  it.only('userAutor can invite more users', () => {
+  it('userAutor can invite more users', () => {
     cy.visit('/login');
     cy.loginSCB(users_new.user1.email, users_new.user1.password);
     cy.get(
@@ -105,5 +105,39 @@ describe('user can create a box and run it', () => {
     cy.get(generalElements.enterButton).click();
     cy.get('.santa-modal_content_buttons > .btn-main').click();
     cy.contains('Жеребьевка проведена').should('exist');
+  });
+  it('Notification', () => {
+    cy.get(generalElements.noteButton).click();
+    cy.contains(
+      `У тебя появился подопечный в коробке "Mango". Скорее переходи по кнопке, чтобы узнать кто это!`
+    ).should('exist');
+    cy.clearCookies();
+  });
+  it('Notification other users', () => {
+    cy.visit('/login');
+    cy.loginSCB(users_new.user1.email, users_new.user1.password);
+    cy.get(generalElements.noteButton).click();
+    cy.contains(
+      `У тебя появился подопечный в коробке "Mango". Скорее переходи по кнопке, чтобы узнать кто это!`
+    ).should('exist');
+    cy.clearCookies();
+  });
+  it('Notification other users', () => {
+    cy.visit('/login');
+    cy.loginSCB(users_new.user2.email, users_new.user2.password);
+    cy.get(generalElements.noteButton).click();
+    cy.contains(
+      `У тебя появился подопечный в коробке "Mango". Скорее переходи по кнопке, чтобы узнать кто это!`
+    ).should('exist');
+    cy.clearCookies();
+  });
+  it.only('Notification other users', () => {
+    cy.visit('/login');
+    cy.loginSCB(users_new.user3.email, users_new.user3.password);
+    cy.get(generalElements.noteButton).click();
+    cy.contains(
+      `У тебя появился подопечный в коробке "Mango". Скорее переходи по кнопке, чтобы узнать кто это!`
+    ).should('exist');
+    cy.clearCookies();
   });
 });

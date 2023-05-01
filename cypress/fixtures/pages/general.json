@@ -1,4 +1,6 @@
 {
     "arrowRight": ".btn-arrow-right",
-    "enterButton": ".btn-main"
+    "enterButton": ".btn-main",
+    "noteButton": ".layout-1__header-wrapper-fixed > .layout-1__header > .header > .header__items > .layout-row-start > :nth-child(2) > .header-item__text > .txt--med"
+
 }

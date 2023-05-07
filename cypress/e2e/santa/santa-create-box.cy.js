@@ -13,9 +13,9 @@ describe('user can create a box and run it', () => {
   let maxAmount = 50;
   let currency = 'Евро';
   let inviteLink;
-  let idBox = faker.word.noun({ length: { min: 5, max: 15 } });
+  let idBox;
 
-  it('user logins and create a box', () => {
+  it.only('user logins and create a box', () => {
     cy.visit('/login');
     cy.loginSCB(users_new.userAutor.email, users_new.userAutor.password);
     cy.contains('Создать коробку').click();
@@ -29,6 +29,11 @@ describe('user can create a box and run it', () => {
     cy.get(generalElements.arrowRight).click();
     cy.get(generalElements.arrowRight).click();
     cy.get(dashboardPage.createdBoxName).should('have.text', newBoxName);
+    cy.get(':nth-child(3) > .frm')
+      .invoke('text')
+      .then((Symb) => {
+        idBox = Symb;
+      });
     cy.get('.layout-1__header-wrapper-fixed .toggle-menu-item--active span')
       .invoke('text')
       .then((text) => {
@@ -132,7 +137,7 @@ describe('user can create a box and run it', () => {
     ).should('exist');
     cy.clearCookies();
   });
-  it.only('Notification other users', () => {
+  it('Notification other users', () => {
     cy.visit('/login');
     cy.loginSCB(users_new.user3.email, users_new.user3.password);
     cy.get(generalElements.noteButton).click();
@@ -148,12 +153,12 @@ describe('user can create a box and run it', () => {
       url: 'https://staging.lpitko.ru/api/login',
       body: {
         email: users_new.userAutor.email,
-        password: usres_new.userAutor.password,
+        password: users_new.userAutor.password,
       },
     });
-  });
-  cy.request({
-    metod: 'DELETE',
-    url: 'api/box/${idBox}',
+    cy.request({
+      metod: 'DELETE',
+      url: 'api/box/' + idBox,
+    });
   });
 });

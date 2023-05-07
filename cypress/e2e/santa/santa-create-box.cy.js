@@ -156,9 +156,10 @@ describe('user can create a box and run it', () => {
         password: users_new.userAutor.password,
       },
     });
-    cy.request({
-      metod: 'DELETE',
-      url: 'api/box/' + idBox,
-    });
+  });
+  cy.request({
+    metod: 'DELETE',
+    url: 'api/box/${idBox}',
+  });
   });
 });

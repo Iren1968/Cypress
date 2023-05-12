@@ -3,7 +3,7 @@ const { defineConfig } = require('cypress');
 module.exports = defineConfig({
   projectId: 'ht8vzr',
   e2e: {
-    baseUrl: 'https://santa-secret.ru/',
+    baseUrl: 'https://santa-secret.ru/', https://staging.lpitko.ru/
     pageLoadTimeout: 200000,
     watchForFileChanges: false,
     setupNodeEvents(on, config) {

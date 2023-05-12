@@ -13,9 +13,9 @@ describe('user can create a box and run it', () => {
   let maxAmount = 50;
   let currency = 'Евро';
   let inviteLink;
-  let idBox;
+  let newBoxId = faker.word.noun({ length: { min: 5, max: 15 } });
 
-  it.only('user logins and create a box', () => {
+  it('user logins and create a box', () => {
     cy.visit('/login');
     cy.loginSCB(users_new.userAutor.email, users_new.userAutor.password);
     cy.contains('Создать коробку').click();
@@ -29,11 +29,7 @@ describe('user can create a box and run it', () => {
     cy.get(generalElements.arrowRight).click();
     cy.get(generalElements.arrowRight).click();
     cy.get(dashboardPage.createdBoxName).should('have.text', newBoxName);
-    cy.get(':nth-child(3) > .frm')
-      .invoke('text')
-      .then((Symb) => {
-        idBox = Symb;
-      });
+    cy.get(':nth-child(3) > .frm').clear().type(newBoxId)
     cy.get('.layout-1__header-wrapper-fixed .toggle-menu-item--active span')
       .invoke('text')
       .then((text) => {
@@ -71,7 +67,7 @@ describe('user can create a box and run it', () => {
     cy.clearCookies();
   });
 
-  it('userAutor can invite more users', () => {
+  it.only('userAutor can invite more users', () => {
     cy.visit('/login');
     cy.loginSCB(users_new.user1.email, users_new.user1.password);
     cy.get(
@@ -159,7 +155,7 @@ describe('user can create a box and run it', () => {
   });
   cy.request({
     metod: 'DELETE',
-    url: 'api/box/${idBox}',
+    url: 'api/box/${newBoxId}',
   });
   });
 });

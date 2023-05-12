@@ -27,7 +27,11 @@
   },
   "homepage": "https://github.com/Iren1968/Cypress_start#readme",
   "devDependencies": {
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "@faker-js/faker": "^7.6.0",
     "cypress": "^12.11.0"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^17.0.0"
   }
 }

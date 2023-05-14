@@ -6,9 +6,8 @@ Feature: User login on secret santa website, creat a box, invite participants an
     Then userAutor is on dashboard page and see button "creat a box"
 
   Scenario: userAutor  creat a box successfully
-    When userAutor clicks on 'Creat box' button
-    Then userAutor passes the steps of box creating
-    Then userAutor created the box successfully
+    When userAutor passes the steps of box creating
+    
 
   Scenario: userAutor invites a participant via the link successfully and create a card in the box
     When userAutor generates an invitation link

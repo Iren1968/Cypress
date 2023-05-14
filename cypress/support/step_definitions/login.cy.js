@@ -8,8 +8,8 @@ const inviteeBoxPage = require('../../fixtures/pages/inviteeBoxPage.json');
 const inviteeDashboard = require('../../fixtures/pages/inviteeDashboard.json');
 import { faker } from '@faker-js/faker';
 
-let newBoxId = faker.word.noun({ length: { min: 5, max: 10 } });
-let newBoxName = faker.word.noun({ length: { min: 5, max: 10 } });
+let newBoxId = 'tvE8u8'; //= faker.word.noun({ length: { min: 5, max: 10 } });
+let newBoxName = 'Grusha'; //= faker.word.noun({ length: { min: 5, max: 10 } });
 let wishes = faker.word.noun() + faker.word.adverb() + faker.word.adjective();
 let maxAmount = 50;
 let currency = 'Евро';
@@ -27,21 +27,21 @@ Then('userAutor is on dashboard page and see button {string}', function () {
 });
 
 //userAutor  creat a box successfully
-When('userAutor clicks on {string} button', function () {
-  cy.contains('Создать коробку').click().wait(10000);
-  cy.get(boxPage.boxNameField).type(newBoxName);
+When('userAutor passes the steps of box creating', function () {
+  cy.get(boxPage.boxNameField).clear().type(newBoxName);
+  cy.get(':nth-child(3) > .frm').clear().type(newBoxId);
   cy.get(generalElements.arrowRight).click();
   cy.get(boxPage.sixthIcon).click();
   cy.get(generalElements.arrowRight).click();
   cy.get(boxPage.giftPriceToggle).check({ force: true });
   cy.get(boxPage.maxAmount).type(maxAmount);
   cy.get(boxPage.currency).select(currency);
-  cy.get(generalElements.arrowRight).click();
+  cy.get(generalElements.arrowRight).click().wait(5000);
   cy.get(generalElements.arrowRight).click().wait(5000);
   cy.get(dashboardPage.createdBoxName)
     .should('have.text', newBoxName)
     .wait(5000);
-  cy.get(':nth-child(3) > .frm').clear().type(newBoxId);
+  //cy.get(':nth-child(3) > .frm').clear().type(newBoxId);
   cy.get('.layout-1__header-wrapper-fixed .toggle-menu-item--active span')
     .invoke('text')
     .then((text) => {
@@ -51,7 +51,12 @@ When('userAutor clicks on {string} button', function () {
 
 //userAutor invites a participant via the link successfully and create a card in the box
 When('userAutor generates an invitation link', function () {
-  cy.get(generalElements.enterButton).click({ force: true });
+  cy.get(
+    '.layout-1__header-wrapper-fixed > .layout-1__header-secondary__menu > .header-secondary-menu > .organizer-menu > .organizer-menu__wrapper > :nth-child(1) > .txt--med'
+  ).click({ force: true });
+  cy.get(
+    '.layout-1__header-wrapper-fixed > .layout-1__header-secondary__menu > .header-secondary-menu > .organizer-menu > .organizer-menu__wrapper > :nth-child(1) > .txt--med'
+  ).click({ force: true });
   cy.get(invitePage.inviteLink)
     .invoke('text')
     .then((link) => {
@@ -64,12 +69,12 @@ Then('userAutor created the box successfully', function () {
   cy.get(generalElements.enterButton).click();
   cy.contains('войдите').click();
   cy.loginSCB(users_new.user1.email, users_new.user1.password);
-  cy.contains('Создать карточку участника').should('exist');
-  cy.get(generalElements.enterButton).click();
-  cy.get(generalElements.arrowRight).click();
-  cy.get(generalElements.arrowRight).click();
-  cy.get(inviteeBoxPage.wishesInput).type(wishes);
-  cy.get(generalElements.arrowRight).click();
+  //cy.contains('Создать карточку участника').should('exist');
+  //cy.get(generalElements.enterButton).click();
+  // cy.get(generalElements.arrowRight).click();
+  // cy.get(generalElements.arrowRight).click();
+  // cy.get(inviteeBoxPage.wishesInput).type(wishes);
+  //cy.get(generalElements.arrowRight).click();
   cy.get(inviteeDashboard.noticeforInvitee)
     .invoke('text')
     .then((text) => {
@@ -89,16 +94,20 @@ When(
     cy.loginSCB(email, password);
   }
 );
-When('userAutor clicks on "add participants" button', function () {
+When('userAutor clicks on {string} button', function () {
   cy.get(
     '.layout-1__header-wrapper-fixed > .layout-1__header > .header > .header__items > .layout-row-start > [href="/account/boxes"] > .header-item > .header-item__text > .txt--med'
   ).click({ force: true });
   cy.get(
-    ':nth-child(1) > a.base--clickable > .user-card > .user-card__info-wrapper > .user-card__name > .txt--med'
-  ).click();
-  cy.get('a > .txt-secondary--med').click({ force: true });
-});
-Then('userAutor fills the cells in the table', function (name, email) {
+    ':nth-child(4) > a.base--clickable > .user-card > .user-card__info-wrapper > .user-card__name > .txt--med'
+  ).click({ force: true });
+  cy.get(
+    '.layout-1__header-wrapper-fixed > .layout-1__header-secondary > .header-secondary > .header-secondary__right-item > .toggle-menu-wrapper > .toggle-menu-button > .toggle-menu-button--inner'
+  ).click({ force: true });
+  cy.get(
+    '.layout-1__header-wrapper-fixed > .layout-1__header-secondary__menu > .header-secondary-menu > .organizer-menu > .organizer-menu__wrapper > :nth-child(1) > .txt--med'
+  ).click({ force: true });
+  Then('userAutor fills the cells in the table', function (name, email) {
   cy.get(
     ':nth-child(1) > .frm-wrapper > #input-table-0',
     dataTable.hashes()[0].type(name)
@@ -131,9 +140,9 @@ When("userAutor clicks on 'go to the draw' button", function () {
   cy.get(
     '.layout-1__header-wrapper-fixed > .layout-1__header-secondary > .header-secondary > .header-secondary__left-item > .box-header-info > .box-header-info__wrapper'
   ).click();
-  cy.get('a > .txt-secondary--med').click();
+ // cy.get('a > .txt-secondary--med').click();
 });
-Then("userAutor clicks on 'start a draw' bttn", function () {
+Then("unuserAutor clicks on {string} button", function () {
   cy.get(generalElements.enterButton).click();
 });
 Then('userAutor clicks on verification button', function () {

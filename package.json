@@ -11,8 +11,18 @@
     "cy:run:chrome": "npx cypress run --browser chrome --spec cypress/e2e/second_santa.cy.js",
     "cy:run:electron": "npx cypress run --browser electron --spec cypress/e2e/first_santa.cy.js",
     "cy:run:all": "npm run cy:run:electron '&&' npm run cy:run:chrome",
-    "cy:run:all:dash": "npm run cy:run:chrome --record --key c9b5e0bc-c9a0-4f3a-ab5a-1a524e2b7fd2 && npm run cy:run:electron --record --key c9b5e0bc-c9a0-4f3a-ab5a-1a524e2b7fd2"
+    "cy:run:all:dash": "npm run cy:run:chrome --record --key c9b5e0bc-c9a0-4f3a-ab5a-1a524e2b7fd2 && npm run cy:run:electron --record --key c9b5e0bc-c9a0-4f3a-ab5a-1a524e2b7fd2",
+    "cy:run:cloud": "cypress run --record --key c9b5e0bc-c9a0-4f3a-ab5a-1a524e2b7fd2",
+    "cy:nokey:spec1": "cypress run --spec 'cypress/e2e/folder1_21.1/second_santa_test.cy.js'",
+    "cy:nokey:spec2": "cypress run --spec 'cypress/e2e/folder2_21.1/login_test.cy.js'",
+    "cy:run:spec1:chrome": "cypress run --config-file cypress.config.js --browser chrome --spec cypress/e2e/folder1_21.1/second_santa_test.cy.js",
+    "cy:run:spec2:electron": "cypress run --config-file cypress-prod.config.js --browser electron --spec 'cypress/e2e/folder2_21.1/login_test.cy.js'",
+    "cy:dashboard:spec1": "npm run cy:run:spec1:chrome --record --key c9b5e0bc-c9a0-4f3a-ab5a-1a524e2b7fd2",
+    "cy:dashboard:spec2": "npm run cy:run:spec2:electron --record --key c9b5e0bc-c9a0-4f3a-ab5a-1a524e2b7fd2",
+    "cy:local:spec1:spec2:parallel": "npm run cy:run:spec1:chrome & npm run cy:run:spec2:electron"
+  
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Iren1968/Cypress_start.git"
@@ -32,6 +42,7 @@
     "cypress": "^12.11.0"
   },
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^17.0.0"
+    "@badeball/cypress-cucumber-preprocessor": "^17.0.0",
+    "cypress-parallel": "^0.13.0"
   }
 }

@@ -19,5 +19,17 @@
 "email":"kapadolgova+test12@gmail.com",
 "password":"Gibbon100", 
 "name":"Irina3"
+},
+"user4": {
+    "email": "enot@gmail.com",
+    "password": "Gibbon55"
+},
+"user5": {
+    "email": "kapadolgova@gmail",
+    "password": "Gibbon45"
+},
+"user6": {
+    "email": "kapadolgova@gmail.com",
+    "password": "Gibbon"
 }
 }

@@ -1,3 +1,9 @@
 node_modules
 /videos
 /screenshots
+
+cypress/videos/login.feature.mp4
+cypress/screenshots/login.feature/User login on secret santa website, creat a box, invite participants and make a draw -- userAutor logs in sucessfully (failed).png
+cypress/screenshots/login.feature/User login on secret santa website, creat a box, invite participants and make a draw -- userAutor invites a participant via the link successfully and create a card in the box (failed).png
+cypress/screenshots/login.feature/User login on secret santa website, creat a box, invite participants and make a draw -- userAutor adds participantы in a different way (failed).png
+cypress/screenshots/login.feature/User login on secret santa website, creat a box, invite participants and make a draw -- userAutor  creat a box successfully (failed).png

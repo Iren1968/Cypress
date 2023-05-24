@@ -1,10 +1,11 @@
+import cypress from 'cypress';
 import { Login } from '../fixtures/Login';
 var login = new Login();
 
 Cypress.Commands.add('loginSS', (email, password) => {
-  login.btnLogin().wait(650).click();
-  login.email().type(Cypress.env('mail'));
-  login.password().type(Cypress.env('password'));
+  login.btnLogin().click().wait(5000);
+  login.email().type(email);
+  login.password().type(password);
   login.clickBtnLogin().wait(650).click();
 });
 

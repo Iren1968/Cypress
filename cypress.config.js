@@ -7,10 +7,12 @@ const addCucumberPreprocessorPlugin =
 
 module.exports = defineConfig({
   projectId: 'ht8vzr',
+  viewportWidth: 1280,
+  viewportHeight: 800,
   e2e: {
-    baseUrl: 'https://santa-secret.ru/',
+    baseUrl: 'https://staging.lpitko.ru',
     testIsolation: false,
-    specPattern: '**/*.feature',
+    specPattern: '**/*.cy.js',
     pageLoadTimeout: 200000,
     watchForFileChanges: false,
     setupNodeEvents(on, config) {
